@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRevisionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_codigo}" for="codigo" />
+                    <h:outputLabel id="codigo" value="#{revisionController.selected.codigo}" title="#{bundle.EditRevisionTitle_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_cambioFiltro}" for="cambioFiltro" />
+                    <h:inputText id="cambioFiltro" value="#{revisionController.selected.cambioFiltro}" title="#{bundle.EditRevisionTitle_cambioFiltro}" required="true" requiredMessage="#{bundle.EditRevisionRequiredMessage_cambioFiltro}"/>
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_cambioAceite}" for="cambioAceite" />
+                    <h:inputText id="cambioAceite" value="#{revisionController.selected.cambioAceite}" title="#{bundle.EditRevisionTitle_cambioAceite}" required="true" requiredMessage="#{bundle.EditRevisionRequiredMessage_cambioAceite}"/>
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_cambioFrenos}" for="cambioFrenos" />
+                    <h:inputText id="cambioFrenos" value="#{revisionController.selected.cambioFrenos}" title="#{bundle.EditRevisionTitle_cambioFrenos}" required="true" requiredMessage="#{bundle.EditRevisionRequiredMessage_cambioFrenos}"/>
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_revisioncol}" for="revisioncol" />
+                    <h:inputText id="revisioncol" value="#{revisionController.selected.revisioncol}" title="#{bundle.EditRevisionTitle_revisioncol}" required="true" requiredMessage="#{bundle.EditRevisionRequiredMessage_revisioncol}"/>
+                    <h:outputLabel value="#{bundle.EditRevisionLabel_cochescodigo}" for="cochescodigo" />
+                    <h:selectOneMenu id="cochescodigo" value="#{revisionController.selected.cochescodigo}" title="#{bundle.EditRevisionTitle_cochescodigo}" required="true" requiredMessage="#{bundle.EditRevisionRequiredMessage_cochescodigo}">
+                        <f:selectItems value="#{cochesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{revisionController.update}" value="#{bundle.EditRevisionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRevisionViewLink}"/>
+                <br />
+                <h:commandLink action="#{revisionController.prepareList}" value="#{bundle.EditRevisionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRevisionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

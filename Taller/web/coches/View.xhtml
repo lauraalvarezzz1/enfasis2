@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCochesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCochesLabel_codigo}"/>
+                    <h:outputText value="#{cochesController.selected.codigo}" title="#{bundle.ViewCochesTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_matricula}"/>
+                    <h:outputText value="#{cochesController.selected.matricula}" title="#{bundle.ViewCochesTitle_matricula}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_marca}"/>
+                    <h:outputText value="#{cochesController.selected.marca}" title="#{bundle.ViewCochesTitle_marca}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_modelo}"/>
+                    <h:outputText value="#{cochesController.selected.modelo}" title="#{bundle.ViewCochesTitle_modelo}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_color}"/>
+                    <h:outputText value="#{cochesController.selected.color}" title="#{bundle.ViewCochesTitle_color}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_precio}"/>
+                    <h:outputText value="#{cochesController.selected.precio}" title="#{bundle.ViewCochesTitle_precio}"/>
+                    <h:outputText value="#{bundle.ViewCochesLabel_clientecodigo}"/>
+                    <h:outputText value="#{cochesController.selected.clientecodigo}" title="#{bundle.ViewCochesTitle_clientecodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cochesController.destroyAndView}" value="#{bundle.ViewCochesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCochesEditLink}"/>
+                <br />
+                <h:commandLink action="#{cochesController.prepareCreate}" value="#{bundle.ViewCochesCreateLink}" />
+                <br />
+                <h:commandLink action="#{cochesController.prepareList}" value="#{bundle.ViewCochesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCochesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
